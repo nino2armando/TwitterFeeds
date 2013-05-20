@@ -1,0 +1,66 @@
+﻿@model TwitterFeeds.Models.TweetDataContract
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.ActionLink("View Raw Json","RawData")
+
+<h2>Total Tweets</h2>
+@foreach (var item in Model.TotalTweets)
+{
+    <p>
+        @Html.DisplayFor(modelItem => item.Key)
+    </p>
+        <p>
+        @Html.DisplayFor(modelItem => item.Value)
+    </p>
+}
+
+<h2>Total Users Mentioned</h2>
+@foreach (var item in Model.UserMentions)
+{
+    <p>
+        @Html.DisplayFor(modelItem => item.Key)
+    </p>
+        <p>
+        @Html.DisplayFor(modelItem => item.Value)
+    </p>
+}
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeLine.First().User.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeLine.First().User.ScreenName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeLine.First().Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeLine.First().CreatedAt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.TimeLine) {
+    <tr>
+         <td>
+            @Html.DisplayFor(modelItem => item.User.Name)   
+        </td>       
+        <td>
+            @Html.DisplayFor(modelItem => item.User.ScreenName)  
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+        </td>
+    </tr>
+
+}
+
+</table>
