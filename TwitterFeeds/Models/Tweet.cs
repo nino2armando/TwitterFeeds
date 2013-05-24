@@ -22,7 +22,4 @@ namespace TwitterFeeds.Models
         [JsonProperty("entities")]
         public Entities Entities { get; set; }
     }
-
-
-
 }
